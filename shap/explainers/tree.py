@@ -582,7 +582,8 @@ class TreeEnsemble:
             self.objective = objective_name_map.get(model.criterion, None)
             self.tree_output = "raw_value"
         elif safe_isinstance(model, ["sklearn.tree.DecisionTreeClassifier", "sklearn.tree.tree.DecisionTreeClassifier",
-            "sklearn1.tree.DecisionTreeClassifier", "sklearn1.tree.tree.DecisionTreeClassifier"]):
+            "sklearn1.tree.DecisionTreeClassifier", "sklearn1.tree.tree.DecisionTreeClassifier",
+            "sklearn1.tree._classes.DecisionTreeClassifier"]):
             self.internal_dtype = model.tree_.value.dtype.type
             self.input_dtype = np.float32
             self.trees = [Tree(model.tree_, normalize=True, data=data, data_missing=data_missing)]
